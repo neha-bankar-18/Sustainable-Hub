@@ -99,8 +99,6 @@ An AI-powered web application to promote sustainable living, developed as part o
 
 ---
 
-## 📁 Folder Structure
-
 
 
 ## 🛡️ Features
