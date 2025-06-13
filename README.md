@@ -47,7 +47,6 @@ An AI-powered web application to promote sustainable living, developed as part o
 - Dashboard with stats, activity logs, and sustainability tips
 - Points, badges, and eco-friendly streak tracking
 
----
 
 
 
