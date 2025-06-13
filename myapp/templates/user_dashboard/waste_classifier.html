@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>SustainableHub User</title>
+    <meta
+      content="width=device-width, initial-scale=1.0, shrink-to-fit=no"
+      name="viewport"
+    />
+    <link
+      rel="icon"
+      href="/media/assets/img/logo.png"
+      type="image/x-icon"
+    />
+
+    <!-- Fonts and icons -->
+    <script src="/media/assets/dashboard/assets/js/plugin/webfont/webfont.min.js"></script>
+    <script>
+      WebFont.load({
+        google: { families: ["Public Sans:300,400,500,600,700"] },
+        custom: {
+          families: [
+            "Font Awesome 5 Solid",
+            "Font Awesome 5 Regular",
+            "Font Awesome 5 Brands",
+            "simple-line-icons",
+          ],
+          urls: ["/media/assets/dashboard/assets/css/fonts.min.css"],
+        },
+        active: function () {
+          sessionStorage.fonts = true;
+        },
+      });
+    </script>
+
+    <!-- CSS Files -->
+    <link rel="stylesheet" href="/media/assets/dashboard/assets/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="/media/assets/dashboard/assets/css/plugins.min.css" />
+    <link rel="stylesheet" href="/media/assets/dashboard/assets/css/kaiadmin.min.css" />
+
+    <!-- CSS Just for demo purpose, don't include it in your project -->
+    <link rel="stylesheet" href="/media/assets/dashboard/assets/css/demo.css" />
+  </head>
+  <body>
+    <div class="wrapper">
+      <!-- Sidebar -->
+      <div class="sidebar" data-background-color="white">
+        <div class="sidebar-logo">
+          <!-- Logo Header -->
+          <div class="logo-header" data-background-color="white">
+            <a href="index.html" class="logo">
+              <img
+                src="/media/assets/dashboard/assets/img/kaiadmin/logo_dark.png"
+                alt="navbar brand"
+                class="navbar-brand"
+                height="20"
+              />
+            </a>
+            <div class="nav-toggle">
+              <button class="btn btn-toggle toggle-sidebar">
+                <i class="gg-menu-right"></i>
+              </button>
+              <button class="btn btn-toggle sidenav-toggler">
+                <i class="gg-menu-left"></i>
+              </button>
+            </div>
+            <button class="topbar-toggler more">
+              <i class="gg-more-vertical-alt"></i>
+            </button>
+          </div>
+          <!-- End Logo Header -->
+        </div>
+        <div class="sidebar-wrapper scrollbar scrollbar-inner">
+          <div class="sidebar-content">
+            <ul class="nav nav-secondary">
+              <li class="nav-item">
+                <a
+                 
+                  href="/userdash/"
+                 
+                  aria-expanded="false"
+                >
+                  <i class="fas fa-home"></i>
+                  <p>Dashboard</p>
+                </a>
+                <div class="collapse" id="dashboard">
+                </div>
+              </li>
+              <li class="nav-section">
+                <span class="sidebar-mini-icon">
+                  <i class="fa fa-ellipsis-h"></i>
+                </span>
+                <h4 class="text-section">Components</h4>
+              </li>
+              <li class="nav-item active">
+                <a href="/userdash/wasteclassifier/">
+                 <i class="fa fa-recycle" aria-hidden="true"></i></i>
+                  <p>Waste Management</p>                 
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="/userdash/croprecommend/">
+                 <i class="fa fa-leaf" aria-hidden="true"></i></i>
+                  <p>Crop Recommendation</p>
+                  
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="/userdash/carbonfoot/">
+                 <i class="fa fa-industry" aria-hidden="true"></i></i>
+                  <p>Carbon Footprint</p>                  
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="/userdash/rewards/">
+                 <i class="fa fa-medal" aria-hidden="true"></i></i>
+                  <p>Rewards</p>                  
+                </a>
+              </li>
+
+                <li class="nav-item">
+                  <a href="/logout/">
+                    <i class="fas fa-sign-out-alt"></i>
+                    <p>Log out</p>          
+                  </a>
+                </li>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <!-- End Sidebar -->
+
+      <div class="main-panel">
+        <div class="main-header">
+          <div class="main-header-logo">
+            <!-- Logo Header -->
+            <div class="logo-header" data-background-color="white">
+              <a href="index.html" class="logo">
+                <img
+                src="/media/assets/dashboard/assets/img/kaiadmin/logo_dark.png"
+                alt="navbar brand"
+                class="navbar-brand"
+                height="20"
+              />
+              </a>  
+              <div class="nav-toggle">
+                <button class="btn btn-toggle toggle-sidebar">
+                  <i class="gg-menu-right"></i>
+                </button>
+                <button class="btn btn-toggle sidenav-toggler">
+                  <i class="gg-menu-left"></i>
+                </button>
+              </div>
+              <button class="topbar-toggler more">
+                <i class="gg-more-vertical-alt"></i>
+              </button>
+            </div>
+            <!-- End Logo Header -->
+          </div>
+          <!-- Navbar Header -->
+          <nav
+            class="navbar navbar-header navbar-header-transparent navbar-expand-lg border-bottom"
+          >
+            <div class="container-fluid">
+              <nav
+                class="navbar navbar-header-left navbar-expand-lg navbar-form nav-search p-0 d-none d-lg-flex"
+              >
+
+              </nav>
+
+              <ul class="navbar-nav topbar-nav ms-md-auto align-items-center">
+                <li class="nav-item topbar-user dropdown hidden-caret">
+                  <a
+                    class="dropdown-toggle profile-pic"
+                    data-bs-toggle="dropdown"
+                    href="#"
+                    aria-expanded="false"
+                  >
+                    <div class="avatar-sm">
+                      <img
+                        src="{{ request.user.profile_pic.url }}"
+                        alt="Admin Profile"
+                        class="avatar-img rounded-circle"
+                      />
+                    </div>
+                    <span class="profile-username">
+                      <span class="op-7">Hi,</span>
+                      <span class="fw-bold">{{request.user.first_name}}</span>
+                    </span>
+                  </a>
+                  <ul class="dropdown-menu dropdown-user animated fadeIn">
+                    <div class="dropdown-user-scroll scrollbar-outer">
+                      <li>
+                        <div class="user-box">
+                          <div class="avatar-lg">
+                            <img
+                              src="{{ request.user.profile_pic.url }}"
+                              alt="image profile"
+                              class="avatar-img rounded"
+                            />
+                          </div>
+                          <div class="u-text">
+                            <h4>{{request.user.first_name}}</h4>
+                          <p class="text-muted">{{request.user.email}}</p>
+
+                          </div>
+                        </div>
+                      </li>
+                      <li>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="/admindash/myprofile/">My Profile</a>
+                        <a class="dropdown-item" href="/forgotpass/">Change password</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="/logout/">Logout</a>
+                      </li>
+                    </div>
+                  </ul>
+                </li>
+              </ul>
+            </div>
+          </nav>
+          <!-- End Navbar -->
+        </div>
+
+        <div class="container">
+          <div class="page-inner">
+            <div class="page-header">
+              <h3 class="fw-bold mb-3">Waste Management</h3>
+              <ul class="breadcrumbs mb-3">
+                <li class="nav-home"><a href="#"><i class="icon-home"></i></a></li>
+                <li class="separator"><i class="icon-arrow-right"></i></li>
+                <li class="nav-item"><a href="#">Waste Management</a></li>
+              </ul>
+            </div>
+        
+            <div class="row g-4">
+              <!-- Upload Image -->
+              <div class="col-md-6">
+                <div class="card">
+                  <div class="card-header">
+                    <div class="card-title">Upload Image</div>
+                  </div>
+                  <form method="POST" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <div class="card-body" style="height: 365px;">
+                      <div class="form-group">
+                        <label for="waste_upload">Upload Image</label><br />
+                        <input type="file" class="form-control-file" id="waste_upload" name="image" accept="image/*" />
+                      </div>
+                      {% if prediction %}
+                      <div class="form-group mt-3">
+                        <p><strong>Prediction:</strong> {{ prediction }}</p>
+                        <img src="{{ image_url }}" width="150" class="img-thumbnail mb-2" alt="Uploaded Image" />
+                      </div>
+                      {% endif %}
+                    </div>
+                    <div class="card-action">
+                      <button type="submit" class="btn btn-success">Submit</button>
+                    </div>
+                  </form>
+                </div>
+              </div>
+        
+              <!-- Disposal Task -->
+              
+              <div class="col-md-6">
+                {% if task %}
+                <div class="card">
+                  <div class="card-header">
+                    <div class="card-title">♻️ Suggested Disposal Method</div>
+                  </div>
+                  <div class="card-body">
+                    <p>{{ task }}</p>
+                    <form method="POST">
+                      {% csrf_token %}
+                      <input type="hidden" name="complete_task" value="true" />
+                      <button type="submit" class="btn btn-success btn-sm mt-2">Mark as Completed</button>
+                    </form>
+                  </div>
+                </div>
+                {% endif %}
+                <div class="card">
+                  <div class="card-header">
+                    <div class="card-title">Your Green Score</div>
+                  </div>
+                  <div class="card-body">
+                    <p>🌿 {{ reward_points }} Points</p>
+                  </div>
+                </div>
+
+                <div class="card">
+                  <div class="card-header">
+                    <div class="card-title">🌍 Did You Know?</div>
+                  </div>
+                  <div class="card-body">
+                    <p>{{ fact }}</p>
+                  </div>
+                </div>
+              </div>
+ 
+              <!-- Map -->
+              <div class="col-md-12">
+                <div class="card">
+                  <div class="card-header">
+                    <div class="card-title">Nearby Waste Disposal Centers</div>
+                  </div>
+                  <div class="card-body" style="height: 300px;">
+                    <div id="map" style="height: 100%; width: 100%; border-radius: 8px;"></div>
+                  </div>
+                </div>
+              </div>
+        
+              <!-- Spacer to balance uneven cards -->
+              {% comment %} <div class="col-md-6"></div> {% endcomment %}
+        
+              <!-- Full-Width History Section -->
+              <div class="col-12">
+                <div class="card mt-4">
+                  <div class="card-header d-flex justify-content-between align-items-center">
+                    <div class="card-title mb-0">🗂️ Classification History</div>
+                    <form method="get" class="d-flex gap-2">
+                      <input type="date" name="from_date" class="form-control form-control-sm" value="{{ request.GET.from_date }}">
+                      <input type="date" name="to_date" class="form-control form-control-sm" value="{{ request.GET.to_date }}">
+                      <button type="submit" class="btn btn-sm btn-primary">Filter</button>
+                    </form>
+                  </div>
+                  <div class="card-body">
+                    {% if history %}
+                      <table class="table table-bordered table-striped">
+                        <thead>
+                          <tr>
+                            <th>Date</th>
+                            <th>Image</th>
+                            <th>Predicted Class</th>
+                            <th>Confidence (%)</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          {% for item in history %}
+                            <tr>
+                              <td>{{ item.created_at|date:"Y-m-d H:i" }}</td>
+                              <td><img src="{{ item.image.url }}" alt="Waste" style="width: 80px;" /></td>
+                              <td>{{ item.predicted_class }}</td>
+                              <td>{{ item.confidence|floatformat:2 }}</td>
+                            </tr>
+                          {% endfor %}
+                        </tbody>
+                      </table>
+                      <div class="mt-3 d-flex justify-content-center">
+                        <nav>
+                          <ul class="pagination">
+                            {% if history.has_previous %}
+                              <li class="page-item"><a class="page-link" href="?page={{ history.previous_page_number }}{% if request.GET.from_date %}&from_date={{ request.GET.from_date }}{% endif %}{% if request.GET.to_date %}&to_date={{ request.GET.to_date }}{% endif %}">Previous</a></li>
+                            {% endif %}
+                            <li class="page-item active"><span class="page-link">{{ history.number }}</span></li>
+                            {% if history.has_next %}
+                              <li class="page-item"><a class="page-link" href="?page={{ history.next_page_number }}{% if request.GET.from_date %}&from_date={{ request.GET.from_date }}{% endif %}{% if request.GET.to_date %}&to_date={{ request.GET.to_date }}{% endif %}">Next</a></li>
+                            {% endif %}
+                          </ul>
+                        </nav>
+                      </div>
+                    {% else %}
+                      <p>No classification history available for the selected dates.</p>
+                    {% endif %}
+                  </div>
+                </div>
+              </div>
+        
+            </div>
+          </div>
+        </div>
+        
+         
+        <footer class="footer">
+          <div class="container-fluid d-flex justify-content-between">
+            <nav class="pull-left">
+              <ul class="nav">
+                <li class="nav-item">
+                  <a class="nav-link" href="/">
+                    SustainableHub
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#"> Help </a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#"> Licenses </a>
+                </li>
+              </ul>
+            </nav>
+            <div class="copyright">
+              2024, made with <i class="fa fa-heart heart text-danger"></i> by
+              <a href="/">SustainableHub</a>
+            </div>
+            <div>
+              Distributed by
+              <a target="_blank" href="/">SustainableHub</a>.
+            </div>
+          </div>
+        </footer>
+        </div>
+      </div>
+    
+
+      </div>
+    
+
+    </div>
+    <!--   Core JS Files   -->
+    <script src="/media/assets/dashboard/assets/js/core/jquery-3.7.1.min.js"></script>
+    <script src="/media/assets/dashboard/assets/js/core/popper.min.js"></script>
+    <script src="/media/assets/dashboard/assets/js/core/bootstrap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+
+    <!-- jQuery Scrollbar -->
+    <script src="/media/assets/dashboard/assets/js/plugin/jquery-scrollbar/jquery.scrollbar.min.js"></script>
+
+    <!-- Chart JS -->
+    <script src="/media/assets/dashboard/assets/js/plugin/chart.js/chart.min.js"></script>
+
+    <!-- jQuery Sparkline -->
+    <script src="/media/assets/dashboard/assets/js/plugin/jquery.sparkline/jquery.sparkline.min.js"></script>
+
+    <!-- Chart Circle -->
+    <script src="/media/assets/dashboard/assets/js/plugin/chart-circle/circles.min.js"></script>
+
+    <!-- Datatables -->
+    <script src="/media/assets/dashboard/assets/js/plugin/datatables/datatables.min.js"></script>
+
+    <!-- Bootstrap Notify -->
+    <script src="/media/assets/dashboard/assets/js/plugin/bootstrap-notify/bootstrap-notify.min.js"></script>
+
+    <!-- jQuery Vector Maps -->
+   <script src="/media/assets/dashboard/assets/js/plugin/jsvectormap/jsvectormap.min.js"></script>
+    <script src="/media/assets/dashboard/assets/js/plugin/jsvectormap/world.js"></script>
+
+    <!-- Sweet Alert -->
+    <script src="/media/assets/dashboard/assets/js/plugin/sweetalert/sweetalert.min.js"></script>
+
+    <!-- Kaiadmin JS -->
+    <script src="/media/assets/dashboard/assets/js/kaiadmin.min.js"></script>
+
+    <!-- Kaiadmin DEMO methods, don't include it in your project! -->
+    <script src="/media/assets/dashboard/assets/js/setting-demo.js"></script>
+    <script src="/media/assets/dashboard/assets/js/demo.js"></script>
+<script>
+    function initMap() {
+        navigator.geolocation.getCurrentPosition(async position => {
+            const lat = position.coords.latitude;
+            const lon = position.coords.longitude;
+            const map = L.map('map').setView([lat, lon], 14);
+
+            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(map);
+            L.marker([lat, lon]).addTo(map).bindPopup('Your location').openPopup();
+
+            try {
+                // First get city name using reverse geocoding
+                const reverseUrl = `https://nominatim.openstreetmap.org/reverse?format=json&lat=${lat}&lon=${lon}`;
+                const reverseRes = await fetch(reverseUrl, {
+                    headers: { 'User-Agent': 'EcoApp/1.0 (contact@yourapp.com)' }
+                });
+                const reverseData = await reverseRes.json();
+                const city = reverseData.address.city || reverseData.address.town;
+
+                // Now search with city name
+                const searchUrl = `https://nominatim.openstreetmap.org/search?q=recycling+center+${city}&format=json&limit=10&amenity=recycling`;
+                const searchRes = await fetch(searchUrl, {
+                    headers: { 'User-Agent': 'EcoApp/1.0 (contact@yourapp.com)' }
+                });
+                const searchData = await searchRes.json();
+
+                if (searchData.length === 0) {
+                    // Fallback to generic search
+                    const fallbackUrl = `https://nominatim.openstreetmap.org/search?q=waste+disposal&format=json&viewbox=${lon-0.1},${lat-0.1},${lon+0.1},${lat+0.1}&bounded=1`;
+                    const fallbackRes = await fetch(fallbackUrl);
+                    const fallbackData = await fallbackRes.json();
+                    searchData.push(...fallbackData);
+                }
+
+                if (searchData.length === 0) {
+                    showFallbackMarkers(map, lat, lon);
+                    return;
+                }
+
+                searchData.forEach(place => {
+                    L.marker([place.lat, place.lon]).addTo(map)
+                        .bindPopup(`<b>${place.display_name.split(',')[0]}</b>`);
+                });
+
+            } catch (error) {
+                console.error('Error:', error);
+                showFallbackMarkers(map, lat, lon);
+            }
+            
+        }, error => {
+            console.error('Geolocation error:', error);
+            initMapWithFallback();
+        });
+    }
+
+    function showFallbackMarkers(map, lat, lon) {
+        // Show default markers within 10km radius
+        L.marker([lat + 0.05, lon + 0.05]).addTo(map)
+            .bindPopup("City Recycling Center<br>Open 8AM-8PM");
+        
+        L.marker([lat - 0.03, lon + 0.07]).addTo(map)
+            .bindPopup("Eco Waste Station<br>Closed Sundays");
+        
+        L.popup()
+            .setLatLng([lat, lon])
+            .setContent("Showing approximate locations")
+            .openOn(map);
+    }
+
+    function initMapWithFallback() {
+        const map = L.map('map').setView([0, 0], 1);
+        L.popup()
+            .setLatLng([0, 0])
+            .setContent("Enable location to see centers")
+            .openOn(map);
+    }
+
+    // Initialize map after Leaflet loads
+    window.addEventListener('DOMContentLoaded', () => {
+        const leafletCSS = document.createElement('link');
+        leafletCSS.rel = 'stylesheet';
+        leafletCSS.href = 'https://unpkg.com/leaflet@1.7.1/dist/leaflet.css';
+        document.head.appendChild(leafletCSS);
+
+        const leafletJS = document.createElement('script');
+        leafletJS.src = 'https://unpkg.com/leaflet@1.7.1/dist/leaflet.js';
+        leafletJS.onload = initMap;
+        document.head.appendChild(leafletJS);
+    });
+</script>
+      
+      <!-- Add Leaflet CSS & JS -->
+      <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+      <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+  </body>
+</html>

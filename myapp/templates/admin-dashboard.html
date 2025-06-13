@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin Dashboard – Sustainability Hub</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background-color: #f0f4f8;
+            padding: 40px;
+        }
+
+        .dashboard {
+            max-width: 1000px;
+            margin: auto;
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 0 15px rgba(0,0,0,0.1);
+        }
+
+        .top-section {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+        }
+
+        .profile {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .profile img {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid #4caf50;
+        }
+
+        .profile-details {
+            flex-grow: 1;
+        }
+
+        .profile-details h2 {
+            margin: 0;
+            font-size: 24px;
+            color: #2c3e50;
+        }
+
+        .profile-details p {
+            margin: 5px 0;
+            color: #555;
+        }
+
+        .model-upload {
+            flex: 1;
+            min-width: 300px;
+            background: #f9f9f9;
+            padding: 20px;
+            border-radius: 10px;
+            border: 1px solid #ddd;
+        }
+
+        .model-upload h3 {
+            margin-top: 0;
+            color: #2c3e50;
+        }
+
+        .model-upload input,
+        .model-upload textarea {
+            width: 100%;
+            padding: 8px;
+            margin: 8px 0;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            font-family: inherit;
+        }
+
+        .model-upload button {
+            background: #4caf50;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .actions {
+            margin-top: 20px;
+        }
+
+        .actions a {
+            background: #4caf50;
+            color: white;
+            padding: 10px 15px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="dashboard">
+        <h1>👨‍💼 Admin Dashboard</h1>
+
+        <div class="top-section">
+            <div class="profile">
+                <img src="{{ request.user.profile_pic.url }}" alt="Admin Profile">
+                <div class="profile-details">
+                    <h2>{{ request.user.first_name }} {{ request.user.last_name }}</h2>
+                    <p><strong>Username:</strong> {{ request.user.username }}</p>
+                    <p><strong>Email:</strong> {{ request.user.email }}</p>
+                    <p><strong>Joined on:</strong> {{ request.user.date_joined|date:"d M Y" }}</p>
+                </div>
+            </div>
+
+            <div class="model-upload">
+                <h3>📦 Upload AI Model</h3>
+                <form method="POST" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <input type="text" name="name" placeholder="Model Name" required>
+                    <input type="text" name="version" placeholder="Version" required>
+                    <textarea name="description" placeholder="Model Description" rows="3"></textarea>
+                    <input type="number" step="0.01" name="accuracy" placeholder="Accuracy (%)">
+                    <input type="file" name="model_file" accept=".pkl,.h5,.joblib,.pt" required>
+                    <button type="submit">Upload</button>
+                </form>
+            </div>
+        </div>
+
+        <div class="actions">
+            <a href="/logout/">Logout</a>
+        </div>
+    </div>
+</body>
+</html>

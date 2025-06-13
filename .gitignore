@@ -1,0 +1,39 @@
+# Python
+__pycache__/
+*.py[cod]
+*.sqlite3
+*.log
+*.pot
+*.pyc
+
+# Virtual environment
+venv/
+env/
+
+# Django static/media files
+/media/
+staticfiles/
+*.db
+
+# VS Code / IDE settings
+.vscode/
+.idea/
+
+# Environment variables
+.env
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# AI model files
+*.sav
+*.h5
+*.pkl
+
+# Jupyter notebooks (if any)
+.ipynb_checkpoints/
+
+# Migrations (optional, only if you want to regenerate)
+**/migrations/*.pyc
+**/migrations/__pycache__/

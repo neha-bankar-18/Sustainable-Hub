@@ -1,0 +1,679 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>SustainableHub User</title>
+    <meta
+      content="width=device-width, initial-scale=1.0, shrink-to-fit=no"
+      name="viewport"
+    />
+    <link
+      rel="icon"
+      href="/media/assets/img/logo.png"
+      type="image/x-icon"
+    />
+
+    <!-- Fonts and icons -->
+    <script src="/media/assets/dashboard/assets/js/plugin/webfont/webfont.min.js"></script>
+    <script>
+      WebFont.load({
+        google: { families: ["Public Sans:300,400,500,600,700"] },
+        custom: {
+          families: [
+            "Font Awesome 5 Solid",
+            "Font Awesome 5 Regular",
+            "Font Awesome 5 Brands",
+            "simple-line-icons",
+          ],
+          urls: ["/media/assets/dashboard/assets/css/fonts.min.css"],
+        },
+        active: function () {
+          sessionStorage.fonts = true;
+        },
+      });
+    </script>
+
+    <!-- CSS Files -->
+    <link rel="stylesheet" href="/media/assets/dashboard/assets/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="/media/assets/dashboard/assets/css/plugins.min.css" />
+    <link rel="stylesheet" href="/media/assets/dashboard/assets/css/kaiadmin.min.css" />
+
+    <!-- CSS Just for demo purpose, don't include it in your project -->
+    <link rel="stylesheet" href="/media/assets/dashboard/assets/css/demo.css" />
+  </head>
+  <body>
+    <div class="wrapper">
+      <!-- Sidebar -->
+      <div class="sidebar" data-background-color="white">
+        <div class="sidebar-logo">
+          <!-- Logo Header -->
+          <div class="logo-header" data-background-color="white">
+            <a href="index.html" class="logo">
+              <img
+                src="/media/assets/dashboard/assets/img/kaiadmin/logo_dark.png"
+                alt="navbar brand"
+                class="navbar-brand"
+                height="20"
+              />
+            </a>
+            <div class="nav-toggle">
+              <button class="btn btn-toggle toggle-sidebar">
+                <i class="gg-menu-right"></i>
+              </button>
+              <button class="btn btn-toggle sidenav-toggler">
+                <i class="gg-menu-left"></i>
+              </button>
+            </div>
+            <button class="topbar-toggler more">
+              <i class="gg-more-vertical-alt"></i>
+            </button>
+          </div>
+          <!-- End Logo Header -->
+        </div>
+        <div class="sidebar-wrapper scrollbar scrollbar-inner">
+          <div class="sidebar-content">
+            <ul class="nav nav-secondary">
+              <li class="nav-item">
+                <a
+                 
+                  href="/userdash/"
+                 
+                  aria-expanded="false"
+                >
+                  <i class="fas fa-home"></i>
+                  <p>Dashboard</p>
+                </a>
+                <div class="collapse" id="dashboard">
+                </div>
+              </li>
+              <li class="nav-section">
+                <span class="sidebar-mini-icon">
+                  <i class="fa fa-ellipsis-h"></i>
+                </span>
+                <h4 class="text-section">Components</h4>
+              </li>
+              <li class="nav-item">
+                <a href="/userdash/wasteclassifier/">
+                 <i class="fa fa-recycle" aria-hidden="true"></i></i>
+                  <p>Waste Management</p>                 
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="/userdash/croprecommend/">
+                 <i class="fa fa-leaf" aria-hidden="true"></i></i>
+                  <p>Crop Recommendation</p>
+                  
+                </a>
+              </li>
+              <li class="nav-item active">
+                <a href="/userdash/carbonfoot/">
+                 <i class="fa fa-industry" aria-hidden="true"></i></i>
+                  <p>Carbon Footprint</p>                  
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="/userdash/rewards/">
+                 <i class="fa fa-medal" aria-hidden="true"></i></i>
+                  <p>Rewards</p>                  
+                </a>
+              </li>
+
+                <li class="nav-item">
+                  <a href="/logout/">
+                    <i class="fas fa-sign-out-alt"></i>
+                    <p>Log out</p>          
+                  </a>
+                </li>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <!-- End Sidebar -->
+
+      <div class="main-panel">
+        <div class="main-header">
+          <div class="main-header-logo">
+            <!-- Logo Header -->
+            <div class="logo-header" data-background-color="white">
+              <a href="index.html" class="logo">
+                <img
+                src="/media/assets/dashboard/assets/img/kaiadmin/logo_dark.png"
+                alt="navbar brand"
+                class="navbar-brand"
+                height="20"
+              />
+              </a>  
+              <div class="nav-toggle">
+                <button class="btn btn-toggle toggle-sidebar">
+                  <i class="gg-menu-right"></i>
+                </button>
+                <button class="btn btn-toggle sidenav-toggler">
+                  <i class="gg-menu-left"></i>
+                </button>
+              </div>
+              <button class="topbar-toggler more">
+                <i class="gg-more-vertical-alt"></i>
+              </button>
+            </div>
+            <!-- End Logo Header -->
+          </div>
+          <!-- Navbar Header -->
+          <nav
+            class="navbar navbar-header navbar-header-transparent navbar-expand-lg border-bottom"
+          >
+            <div class="container-fluid">
+              <nav
+                class="navbar navbar-header-left navbar-expand-lg navbar-form nav-search p-0 d-none d-lg-flex"
+              >
+
+              </nav>
+
+              <ul class="navbar-nav topbar-nav ms-md-auto align-items-center">
+                <li class="nav-item topbar-user dropdown hidden-caret">
+                  <a
+                    class="dropdown-toggle profile-pic"
+                    data-bs-toggle="dropdown"
+                    href="#"
+                    aria-expanded="false"
+                  >
+                    <div class="avatar-sm">
+                      <img
+                        src="{{ request.user.profile_pic.url }}"
+                        alt="Admin Profile"
+                        class="avatar-img rounded-circle"
+                      />
+                    </div>
+                    <span class="profile-username">
+                      <span class="op-7">Hi,</span>
+                      <span class="fw-bold">{{request.user.first_name}}</span>
+                    </span>
+                  </a>
+                  <ul class="dropdown-menu dropdown-user animated fadeIn">
+                    <div class="dropdown-user-scroll scrollbar-outer">
+                      <li>
+                        <div class="user-box">
+                          <div class="avatar-lg">
+                            <img
+                              src="{{ request.user.profile_pic.url }}"
+                              alt="image profile"
+                              class="avatar-img rounded"
+                            />
+                          </div>
+                          <div class="u-text">
+                            <h4>{{request.user.first_name}}</h4>
+                          <p class="text-muted">{{request.user.email}}</p>
+
+                          </div>
+                        </div>
+                      </li>
+                      <li>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="/admindash/myprofile/">My Profile</a>
+                        <a class="dropdown-item" href="/forgotpass/">Change password</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="/logout/">Logout</a>
+                      </li>
+                    </div>
+                  </ul>
+                </li>
+              </ul>
+            </div>
+          </nav>
+          <!-- End Navbar -->
+        </div>
+
+        <div class="container">
+          <div class="page-inner">
+            <div class="page-header">
+              <h3 class="fw-bold mb-3">Carbon Footprint Calculator</h3>
+            </div>
+        
+            <!-- Input Form -->
+            <form method="POST" >
+              {% csrf_token %}
+              <div class="row">
+                <!-- Personal Information -->
+                <div class="col-md-6">
+                  <div class="card">
+                    <div class="card-header"><strong>Personal Information</strong></div>
+                    <div class="card-body">
+                      <div class="form-group mb-3">
+                        <label>Height (cm)</label>
+                        <input type="number" name="height" class="form-control" required>
+                      </div>
+                      <div class="form-group mb-3">
+                        <label>Weight (kg)</label>
+                        <input type="number" name="weight" class="form-control" required>
+                      </div>
+                      <div class="form-group mb-3">
+                        <label>Sex</label>
+                        <select name="sex" class="form-control" required>
+                          <option value="Male">Male</option>
+                          <option value="Female">Female</option>
+                        </select>
+                      </div>
+                      <div class="form-group mb-3">
+                        <label>Diet</label>
+                        <select name="diet" class="form-control">
+                          <option value="Omnivore">Omnivore</option>
+                          <option value="Vegetarian">Vegetarian</option>
+                          <option value="Vegan">Vegan</option>
+                        </select>
+                      </div>
+                      <div class="form-group mb-3">
+                        <label>Shower Frequency</label>
+                        <select name="shower" class="form-control">
+                          <option value="Daily">Daily</option>
+                          <option value="3-5 times/week">3-5 times/week</option>
+                          <option value="1-2 times/week">1-2 times/week</option>
+                        </select>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  <div class="card mt-4">
+                    <div class="card-header"><strong>Consumption Habits</strong></div>
+                    <div class="card-body">
+                      <div class="form-group mb-3">
+                        <label>Monthly Grocery Bill ($)</label>
+                        <input type="range" name="grocery_bill" class="form-range" min="0" max="1000" value="0" oninput="groceryValue.innerText = this.value">
+                        <span id="groceryValue" class="value-label">0</span>
+                      </div>
+                      <div class="form-group mb-3">
+                        <label>New Clothes Monthly</label>
+                        <input type="range" name="clothes_monthly" class="form-range" min="0" max="10" value="0" oninput="clothesValue.innerText = this.value">
+                        <span id="clothesValue" class="value-label">0</span>
+                      </div>
+                      <div class="form-group mb-3">
+                        <label>Waste Bag Size</label>
+                        <select name="waste_bag" class="form-control">
+                          <option value="Small">Small</option>
+                          <option value="Medium">Medium</option>
+                          <option value="Large">Large</option>
+                        </select>
+                      </div>
+                      <div class="form-group mb-3">
+                        <label>Weekly Waste Bags</label>
+                        <input type="range" name="waste_count" class="form-range" min="0" max="10" value="0" oninput="wasteCountValue.innerText = this.value">
+                        <span id="wasteCountValue" class="value-label">0</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+        
+                <!-- Lifestyle Choices -->
+                <div class="col-md-6">
+                  <div class="card">
+                    <div class="card-header"><strong>Transportation & Energy</strong></div>
+                    <div class="card-body">
+                      <div class="form-group mb-3">
+                        <label>Transport</label>
+                        <select name="transport" class="form-control">
+                          <option value="Public">Public</option>
+                          <option value="Private">Private</option>
+                          <option value="Bicycle/Walk">Bicycle/Walk</option>
+                        </select>
+                      </div>
+                      <div class="form-group mb-3">
+                        <label>Vehicle Type</label>
+                        <select name="vehicle_type" class="form-control">
+                          <option value="None">None</option>
+                          <option value="Car">Car</option>
+                          <option value="Motorbike">Motorbike</option>
+                        </select>
+                      </div>
+                      <div class="form-group mb-3">
+                        <label>Monthly Vehicle KM</label>
+                        <input type="range" name="vehicle_km" class="form-range" min="0" max="2000" value="0" oninput="vehicleKmValue.innerText = this.value">
+                        <span id="vehicleKmValue" class="value-label">0</span>
+                      </div>
+                      <div class="form-group mb-3">
+                        <label>Air Travel</label>
+                        <select name="air_travel" class="form-control">
+                          <option value="Never">Never</option>
+                          <option value="Rarely">Rarely</option>
+                          <option value="Frequently">Frequently</option>
+                        </select>
+                      </div>
+                      <div class="form-group mb-3">
+                        <label>Heating Energy Source</label>
+                        <select name="heating_energy" class="form-control">
+                          <option value="Electricity">Electricity</option>
+                          <option value="Gas">Gas</option>
+                          <option value="Wood">Wood</option>
+                        </select>
+                      </div>
+                      <div class="form-group mb-3">
+                        <label>Energy Efficiency</label>
+                        <select name="energy_efficiency" class="form-control">
+                          <option value="Low">Low</option>
+                          <option value="Moderate">Moderate</option>
+                          <option value="High">High</option>
+                        </select>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  <div class="card mt-4">
+                    <div class="card-header"><strong>Other Activities</strong></div>
+                    <div class="card-body">
+                      <div class="form-group mb-3">
+                        <label>Social Activity</label>
+                        <select name="social" class="form-control">
+                          <option value="Low">Low</option>
+                          <option value="Moderate">Moderate</option>
+                          <option value="High">High</option>
+                        </select>
+                      </div>
+                      <div class="form-group mb-3">
+                        <label>Daily TV/PC Time (hrs)</label>
+                        <input type="range" name="daily_tv_pc" class="form-range" min="0" max="12" value="0" oninput="tvValue.innerText = this.value">
+                        <span id="tvValue" class="value-label">0</span>
+                      </div>
+                      <div class="form-group mb-3">
+                        <label>Daily Internet Time (hrs)</label>
+                        <input type="range" name="internet_daily" class="form-range" min="0" max="12" value="0" oninput="internetValue.innerText = this.value">
+                        <span id="internetValue" class="value-label">0</span>
+                      </div>
+                      <div class="form-group mb-3">
+                        <label>Recycle (Select all that apply)</label><br>
+                        <div class="form-check form-check-inline">
+                          <input class="form-check-input" type="checkbox" name="recycle" value="Plastic">
+                          <label class="form-check-label">Plastic</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                          <input class="form-check-input" type="checkbox" name="recycle" value="Glass">
+                          <label class="form-check-label">Glass</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                          <input class="form-check-input" type="checkbox" name="recycle" value="Paper">
+                          <label class="form-check-label">Paper</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                          <input class="form-check-input" type="checkbox" name="recycle" value="Metal">
+                          <label class="form-check-label">Metal</label>
+                        </div>
+                      </div>
+                      <div class="form-group mb-3">
+                        <label>Cooking Energy Source (Select all that apply)</label><br>
+                        <div class="form-check form-check-inline">
+                          <input class="form-check-input" type="checkbox" name="for_cooking" value="Gas">
+                          <label class="form-check-label">Gas</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                          <input class="form-check-input" type="checkbox" name="for_cooking" value="Electricity">
+                          <label class="form-check-label">Electricity</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                          <input class="form-check-input" type="checkbox" name="for_cooking" value="Wood">
+                          <label class="form-check-label">Wood</label>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="card-footer">
+                      <button type="submit" class="btn btn-success">Calculate Carbon Footprint</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </form>
+        
+<!-- Prediction Result -->
+{% if prediction %}
+<div class="card mt-4">
+  <div class="card-header"><div class="card-title">🌍 Your Carbon Footprint</div></div>
+  <div class="card-body">
+    <p><strong>{{ prediction }} kg CO₂/year</strong></p>
+    <p>Equivalent to planting ~{{ tree_count }} trees</p>
+  </div>
+</div>
+
+<!-- Reward Claim Section (Updated) -->
+<div class="card mt-4">
+  <div class="card-header bg-success text-white">
+    <div class="card-title">🏆 Earn Reward Points</div>
+  </div>
+  <div class="card-body">
+    <div class="row align-items-center">
+      <div class="col-md-8">
+        <h5>Plant Trees to Earn Points</h5>
+        <p>You can earn <strong>10 points per tree</strong> planted to offset your carbon footprint.</p>
+        <p>After planting <strong>{{ tree_count }} trees</strong>, claim your reward below!</p>
+        {% if messages %}
+          {% for message in messages %}
+            <div class="alert alert-success">{{ message }}</div>
+          {% endfor %}
+        {% endif %}
+      </div>
+      <div class="col-md-4 text-center">
+        <form method="POST">
+          {% csrf_token %}
+          <input type="hidden" name="tree_count" value="{{ tree_count }}">
+          <input type="hidden" name="complete_task" value="true">
+          <button type="submit" class="btn btn-success btn-lg">
+            <i class="fas fa-check-circle"></i> Claim {% widthratio tree_count 1 10 %} Points
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+{% elif prediction == "Error" %}
+<!-- ... (keep error section the same) ... -->
+{% endif %}
+
+        
+            <!-- Tips Section -->
+            <div class="card mt-4">
+              <div class="card-header"><div class="card-title">💡 Carbon Reduction Tips</div></div>
+              <div class="card-body">
+                <ul>
+                  <li>Consider reducing meat consumption to lower your dietary carbon footprint</li>
+                  <li>Use public transportation or carpool to reduce vehicle emissions</li>
+                  <li>Switch to energy-efficient appliances and lighting</li>
+                  <li>Reduce, reuse, and recycle to minimize waste</li>
+                  <li>Consider shorter showers to reduce water heating energy</li>
+                </ul>
+              </div>
+            </div>
+        
+<!-- Emission History -->
+<div class="card mt-4">
+  <div class="card-header"><div class="card-title">🗂️ Carbon Footprint History</div></div>
+  <div class="card-body">
+    {% if history %}
+    <table class="table table-bordered table-striped">
+      <thead>
+        <tr>
+          <th>Date</th>
+          <th>Carbon Footprint (kg CO₂/year)</th>
+          <th>Trees Needed</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for item in history %}
+        <tr>
+          <td>{{ item.created_at|date:"Y-m-d H:i" }}</td>
+          <td>{{ item.prediction }}</td>
+          <td>{{ item.tree_count }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+    <div class="mt-3 d-flex justify-content-center">
+      <nav>
+        <ul class="pagination">
+          {% if history.has_previous %}
+          <li class="page-item">
+            <a class="page-link" href="?page={{ history.previous_page_number }}">Previous</a>
+          </li>
+          {% endif %}
+          <li class="page-item active">
+            <span class="page-link">{{ history.number }}</span>
+          </li>
+          {% if history.has_next %}
+          <li class="page-item">
+            <a class="page-link" href="?page={{ history.next_page_number }}">Next</a>
+          </li>
+          {% endif %}
+        </ul>
+      </nav>
+    </div>
+    {% else %}
+    <p>No carbon footprint records yet.</p>
+    {% endif %}
+  </div>
+</div>
+        
+          </div>
+        </div>
+<!-- Optionally add Chart.js for the emission summary chart -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+  // Example chart init if you want dynamic data later
+</script>
+
+
+
+        
+  
+        <footer class="footer">
+          <div class="container-fluid d-flex justify-content-between">
+            <nav class="pull-left">
+              <ul class="nav">
+                <li class="nav-item">
+                  <a class="nav-link" href="/">
+                    SustainableHub
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#"> Help </a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#"> Licenses </a>
+                </li>
+              </ul>
+            </nav>
+            <div class="copyright">
+              2024, made with <i class="fa fa-heart heart text-danger"></i> by
+              <a href="/">SustainableHub</a>
+            </div>
+            <div>
+              Distributed by
+              <a target="_blank" href="/">SustainableHub</a>.
+            </div>
+          </div>
+        </footer>
+        </div>
+      </div>
+    
+
+      </div>
+    
+
+    </div>
+    <!--   Core JS Files   -->
+    <script src="/media/assets/dashboard/assets/js/core/jquery-3.7.1.min.js"></script>
+    <script src="/media/assets/dashboard/assets/js/core/popper.min.js"></script>
+    <script src="/media/assets/dashboard/assets/js/core/bootstrap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- jQuery Scrollbar -->
+    <script src="/media/assets/dashboard/assets/js/plugin/jquery-scrollbar/jquery.scrollbar.min.js"></script>
+
+    <!-- Chart JS -->
+    <script src="/media/assets/dashboard/assets/js/plugin/chart.js/chart.min.js"></script>
+
+    <!-- jQuery Sparkline -->
+    <script src="/media/assets/dashboard/assets/js/plugin/jquery.sparkline/jquery.sparkline.min.js"></script>
+
+    <!-- Chart Circle -->
+    <script src="/media/assets/dashboard/assets/js/plugin/chart-circle/circles.min.js"></script>
+
+    <!-- Datatables -->
+    <script src="/media/assets/dashboard/assets/js/plugin/datatables/datatables.min.js"></script>
+
+    <!-- Bootstrap Notify -->
+    <script src="/media/assets/dashboard/assets/js/plugin/bootstrap-notify/bootstrap-notify.min.js"></script>
+
+    <!-- jQuery Vector Maps -->
+   <script src="/media/assets/dashboard/assets/js/plugin/jsvectormap/jsvectormap.min.js"></script>
+    <script src="/media/assets/dashboard/assets/js/plugin/jsvectormap/world.js"></script>
+
+    <!-- Sweet Alert -->
+    <script src="/media/assets/dashboard/assets/js/plugin/sweetalert/sweetalert.min.js"></script>
+
+    <!-- Kaiadmin JS -->
+    <script src="/media/assets/dashboard/assets/js/kaiadmin.min.js"></script>
+
+    <!-- Kaiadmin DEMO methods, don't include it in your project! -->
+    <script src="/media/assets/dashboard/assets/js/setting-demo.js"></script>
+    <script src="/media/assets/dashboard/assets/js/demo.js"></script>
+    <script>
+      const ctx = document.getElementById('emissionChart').getContext('2d');
+      const chart = new Chart(ctx, {
+        type: 'line',
+        data: {
+          labels: {{ chart_data.labels|safe }},
+          datasets: [
+            {
+              label: 'Total',
+              data: {{ chart_data.total_emission|safe }},
+              borderColor: 'rgba(255,99,132,1)',
+              fill: false
+            },
+            {
+              label: 'Grocery',
+              data: {{ chart_data.grocery_bill|safe }},
+              borderColor: 'rgba(54,162,235,1)',
+              fill: false
+            },
+            {
+              label: 'Vehicle',
+              data: {{ chart_data.vehicle_distance|safe }},
+              borderColor: 'rgba(255,206,86,1)',
+              fill: false
+            },
+            {
+              label: 'Waste',
+              data: {{ chart_data.waste_bags|safe }},
+              borderColor: 'rgba(75,192,192,1)',
+              fill: false
+            },
+            {
+              label: 'Digital',
+              data: {{ chart_data.digital_time|safe }},
+              borderColor: 'rgba(153,102,255,1)',
+              fill: false
+            },
+            {
+              label: 'Clothes',
+              data: {{ chart_data.clothes_purchased|safe }},
+              borderColor: 'rgba(255,159,64,1)',
+              fill: false
+            }
+          ]
+        },
+        options: {
+          responsive: true,
+          scales: {
+            y: {
+              beginAtZero: true,
+              title: {
+                display: true,
+                text: 'Emission (kg CO₂)'
+              }
+            }
+          }
+        }
+      });
+    </script>
+
+      
+      <!-- Add Leaflet CSS & JS -->
+      <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+      <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+  </body>
+</html>
